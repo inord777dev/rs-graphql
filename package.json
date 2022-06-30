@@ -2,10 +2,10 @@
   "name": "rs-graphql",
   "version": "1.0.0",
   "description": "RS GraphQL API server",
-  "main": "src/index.ts",
+  "main": "app/index.ts",
   "scripts": {
-    "start": "node src/index.ts",
-    "dev": "nodemon src/index.ts"
+    "start": "node app/index.ts",
+    "dev": "nodemon app/index.ts"
   },
   "repository": {
     "type": "git",
