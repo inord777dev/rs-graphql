@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "RS GraphQL API server",
   "main": "app/index.ts",
+  "type": "module",
   "scripts": {
-    "start": "node app/index.ts",
-    "dev": "nodemon app/index.ts"
+    "start": "node --experimental-specifier-resolution=node --loader ts-node/esm app/index.ts",
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -18,13 +19,16 @@
   },
   "homepage": "https://github.com/inord777dev/rs-graphql#readme",
   "dependencies": {
+    "@graphql-tools/utils": "^8.8.0",
     "apollo-datasource-rest": "^3.6.1",
     "apollo-server": "^3.9.0",
     "dotenv": "^16.0.1",
-    "graphql": "^16.5.0"
+    "graphql": "^16.5.0",
+    "graphql-tools": "^8.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.18",
+    "ts-node": "^10.8.1",
     "typescript": "^4.7.4"
   }
 }

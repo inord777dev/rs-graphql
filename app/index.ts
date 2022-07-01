@@ -1,5 +1,17 @@
-const { ApolloServer } = require('apollo-server');
-const { tracksTypeDefs} = require('./modules/tracks/schemas/tracks.schemas.ts');
+import { IResolvers, TypeSource } from '@graphql-tools/utils';
+import { ApolloServer } from "apollo-server";
+
+async function startApolloServer(typeDefs: TypeSource, resolvers:  IResolvers) {
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    csrfPrevention: true,
+    cache: "bounded",
+  });
+  const { url } = await server.listen();
+  console.log(`🚀 Server ready at ${url}`);
+}
+
 // const typeDefs = require('./schema');
 // const resolvers = require('./resolvers');
 // const TrackAPI = require('./datasources/track-api');
