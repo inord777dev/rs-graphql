@@ -11,34 +11,38 @@ interface Track {
   genresIds: string[];
 }
 
+const url = process.env.MICROSERVISE_URL || 'http://localhost';
+const port = Number(process.env.MICROSERVISE_TRACKS_PORT) || 3004;
+const path = process.env.MICROSERVISE_TRACKS_PATH || '/v1/tracks';
+
 export default class TracksAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = 'http://localhost:3006/';
+    this.baseURL = `${url}:${port}`;
   }
 
   // GET
   async getTracks() {
-    return await this.get(`v1/tracks`);
+    return this.get(path);
   }
 
   // GET
   async getTrack(id: string) {
-    return this.get(`v1/tracks/${encodeURIComponent(id)}`);
+    return this.get(`${path}/${encodeURIComponent(id)}`);
   }
 
   // POST
   async addTrack(track: Track) {
-    return this.post(`v1/tracks`, track);
+    return this.post(path, track);
   }
 
   // PUT
   async updTrack(id: string, track: Track) {
-    return this.put(`v1/tracks/${encodeURIComponent(id)}`, track);
+    return this.put(`${path}/${encodeURIComponent(id)}`, track);
   }
 
   // DELETE
   async deleteMovie(id: string) {
-    return this.delete(`v1/tracks/${encodeURIComponent(id)}`);
+    return this.delete(`${path}/${encodeURIComponent(id)}`);
   }
 }
