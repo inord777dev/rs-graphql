@@ -11,7 +11,8 @@ const typeDefs = gql`
 
   type Query {
     user(userId: ID!): User
-    jwt: String
+    jwt(email: String, password: String): String
+    verify: User
   }
 `
 

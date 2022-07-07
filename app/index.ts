@@ -34,7 +34,7 @@ async function main() {
       tracks.typeDef,
       users.typeDef
     ],
-    resolvers: _.merge(resolvers, tracks.resolvers),
+    resolvers: _.merge(resolvers, tracks.resolvers, users.resolvers),
   });
 
   const server = new ApolloServer({
@@ -43,12 +43,13 @@ async function main() {
     cache: 'bounded',
     dataSources: () => {
       return {
-        tracksAPI: new tracks.service(),
+        tracksAPI: new tracks.TracksAPI(),
+        usersAPI: new users.UsersAPI(),
       };
     },
     context: ({ req }) => {
-      const token = (req.get('Authorization') || '').replace('Bearer', '');
-      return { isAuth: token.length > 0 };
+      const token = (req.get('Authorization') || '').trim();
+      return { token };
     },
   });
 

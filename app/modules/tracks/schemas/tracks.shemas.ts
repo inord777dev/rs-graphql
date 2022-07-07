@@ -13,7 +13,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    track(trackId: ID!): Track
+    track(trackId: ID!): Track!
     tracks: [Track]!
   }
 
