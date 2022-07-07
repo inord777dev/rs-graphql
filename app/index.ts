@@ -39,10 +39,16 @@ async function main() {
 
   const server = new ApolloServer({
     schema,
+    csrfPrevention: true,
+    cache: 'bounded',
     dataSources: () => {
       return {
         tracksAPI: new tracks.service(),
       };
+    },
+    context: ({ req }) => {
+      const token = (req.get('Authorization') || '').replace('Bearer', '');
+      return { isAuth: token.length > 0 };
     },
   });
 
