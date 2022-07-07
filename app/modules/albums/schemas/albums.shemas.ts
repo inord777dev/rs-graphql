@@ -1,19 +1,19 @@
 import { gql } from "apollo-server";
 
 const typeDefs = gql`
-  type Track {
+  type Album {
       id: ID!
-      title: String!
-      album: Album
+      name: String
+      released: Int
       artists: [Artist]
       bands: [Band]
-      duration: Int
-      released: Int
+      tracks: [Track]
       genres: [Genre]
+      image: String
   }
 
   type Query {
-    track(trackId: ID!): Track
+    albums(albumId: ID!): Album
   }
 `
 
