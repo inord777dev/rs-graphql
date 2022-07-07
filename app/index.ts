@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { ApolloServer } from "apollo-server";
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import _ from "lodash";
@@ -27,12 +28,16 @@ async function main() {
 
   const server = new ApolloServer({ schema });
 
-  const { url, port } = await server.listen();
+  
+  const port = Number(process.env.PORT) || 4000;
+  console.log(process.env.PORT);
+
+  const { url } = await server.listen({ port });
   console.log(`
-       🚀  Server is running
-       🔉  Listening on port ${port}
-       📭  Query at ${url}
-      `);
+    🚀  Server is running
+    🔉  Listening on port ${port}
+    📭  Query at ${url}
+    `);
 }
 
 main();
