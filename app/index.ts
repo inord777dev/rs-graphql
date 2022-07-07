@@ -34,14 +34,19 @@ async function main() {
       tracks.typeDef,
       users.typeDef
     ],
-    resolvers: _.merge(resolvers, tracks.resolvers)
+    resolvers: _.merge(resolvers, tracks.resolvers),
   });
 
-  const server = new ApolloServer({ schema });
-
+  const server = new ApolloServer({
+    schema,
+    dataSources: () => {
+      return {
+        tracksAPI: new tracks.service(),
+      };
+    },
+  });
 
   const port = Number(process.env.PORT) || 4000;
-  console.log(process.env.PORT);
 
   const { url } = await server.listen({ port });
   console.log(`
@@ -52,3 +57,21 @@ async function main() {
 }
 
 main();
+
+
+// // Constructor
+// const server = new ApolloServer({
+//   typeDefs,
+//   resolvers,
+//   csrfPrevention: true,
+//   cache: 'bounded',
+//   context: ({ req }) => ({
+//     authScope: getScope(req.headers.authorization)
+//   })
+// }));
+
+// // Example resolver
+// (parent, args, context, info) => {
+//   if(context.authScope !== ADMIN) throw new AuthenticationError('not admin');
+//   // Proceed
+// }

@@ -1,12 +1,13 @@
+// import DataSource from 'apollo-datasource';
+
 const resolvers = {
   Query: {
-    track(trackId: string) {
-      return {
-        id: trackId,
-      };
+    track(parent:any, args:any, context: any) {
+      return {};
     },
-    tracks() {
-      return [];
+    async tracks(parent:any, args:any, context: any) {
+      const result = await context.dataSources.tracksAPI.getTracks();
+      return result.items;
     }
   },
   Mutation: {
