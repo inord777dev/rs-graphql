@@ -14,7 +14,15 @@ const typeDefs = gql`
 
   type Query {
     track(trackId: ID!): Track
+    tracks: [Track]!
   }
+
+  type Mutation {
+    addTrack: Track
+    updTrack: Track
+    delTrack: DeletePayload
+  }
+
 `
 
 export default typeDefs

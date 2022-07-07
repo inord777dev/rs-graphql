@@ -13,7 +13,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    albums(albumId: ID!): Album
+    album(albumId: ID!): Album
   }
 `
 

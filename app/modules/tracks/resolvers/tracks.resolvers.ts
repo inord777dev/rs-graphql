@@ -1,13 +1,27 @@
 const resolvers = {
   Query: {
-    posts() {
-      return {};
+    track(trackId: string) {
+      return {
+        id: trackId,
+      };
+    },
+    tracks() {
+      return [];
     }
   },
-  Post: {
-    author(post: string) {
-      return {};
+  Mutation: {
+    addTrack() {
+
+    },
+    updTrack() {
+      
+    },
+    delTrack() {
+      return { msg: 'delete complete'}
     }
+  },
+  Track: {
+
   }
 }
 

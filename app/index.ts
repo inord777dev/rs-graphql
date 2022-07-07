@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { ApolloServer } from "apollo-server";
+import { ApolloServer, gql } from "apollo-server";
 import { makeExecutableSchema } from '@graphql-tools/schema'
 import _ from "lodash";
 
@@ -13,22 +13,33 @@ import tracks from "./modules/tracks/tracks.module";
 import users from "./modules/users/users.module";
 
 async function main() {
+
+  const typeDefs = gql`
+    type DeletePayload {
+      msg: String
+    }
+  `;
+
   const resolvers = {};
 
   const schema = makeExecutableSchema({
-    typeDefs: [albums.typeDef,
-    artists.typeDef,
-    bands.typeDef,
-    favourites.typeDef,
-    genres.typeDef,
-    member.typeDef,
-    tracks.typeDef,
-    users.typeDef],
+    typeDefs: [
+      typeDefs,
+      albums.typeDef,
+      artists.typeDef,
+      bands.typeDef,
+      favourites.typeDef,
+      genres.typeDef,
+      member.typeDef,
+      tracks.typeDef,
+      users.typeDef
+    ],
+    resolvers: _.merge(resolvers, tracks.resolvers)
   });
 
   const server = new ApolloServer({ schema });
 
-  
+
   const port = Number(process.env.PORT) || 4000;
   console.log(process.env.PORT);
 
