@@ -7,7 +7,7 @@ const resolvers = {
     },
     async tracks(parent:any, args:any, context: any) {
       const result = await context.dataSources.tracksAPI.getTracks();
-      return result.items;
+       return result.items;
     }
   },
   Mutation: {
