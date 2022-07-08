@@ -18,11 +18,25 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addTrack: Track
-    updTrack: Track
-    delTrack: DeletePayload
+    createTrack(
+      title: String!,
+      album: String,
+      artists: [String!],
+      bands: [String!],
+      duration: Int,
+      released: Int,
+      genres: [String!]): Track
+    updateTrack(
+      trackId: ID!,
+      title: String!,
+      album: String,
+      artists: [String!],
+      bands: [String!],
+      duration: Int,
+      released: Int,
+      genres: [String!]): String
+    deleteTrack(trackId: ID!): DeletePayload
   }
-
 `
 
 export default typeDefs

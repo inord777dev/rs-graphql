@@ -16,8 +16,9 @@ async function main() {
 
   const typeDefs = gql`
     type DeletePayload {
-      msg: String
-    }
+        acknowledged: Boolean,
+        deletedCount: Int 
+      }
   `;
 
   const resolvers = {};
@@ -64,21 +65,3 @@ async function main() {
 }
 
 main();
-
-
-// // Constructor
-// const server = new ApolloServer({
-//   typeDefs,
-//   resolvers,
-//   csrfPrevention: true,
-//   cache: 'bounded',
-//   context: ({ req }) => ({
-//     authScope: getScope(req.headers.authorization)
-//   })
-// }));
-
-// // Example resolver
-// (parent, args, context, info) => {
-//   if(context.authScope !== ADMIN) throw new AuthenticationError('not admin');
-//   // Proceed
-// }

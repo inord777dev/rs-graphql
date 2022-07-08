@@ -30,7 +30,9 @@ const resolvers = {
     async verify(parent:any, args:any , context: any) {
       const result = await context.dataSources.usersAPI.verify(context.token) as User;
       return result ?  {...result, id: result._id} : result;
-    },
+    }
+  },
+  Mutation: {
     async register(parent:any, {firstName, lastName, password, email, favouriteArtistIds} : registerParams , context: any) {
       const result = await context.dataSources.usersAPI.register(firstName, lastName, password, email, favouriteArtistIds) as User;
       return result ?  {...result, id: result._id} : result;

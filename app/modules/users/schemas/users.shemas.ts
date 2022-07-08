@@ -13,6 +13,8 @@ const typeDefs = gql`
     user(userId: ID!): User
     jwt(email: String!, password: String!): String
     verify: User
+  }
+  type Mutation {
     register(firstName: String!, lastName: String!,
       password: String!, email: String!, favouriteArtistIds: [String]): User
   }
