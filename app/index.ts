@@ -1,6 +1,6 @@
-import 'dotenv/config';
+import "dotenv/config";
 import { ApolloServer, gql } from "apollo-server";
-import { makeExecutableSchema } from '@graphql-tools/schema'
+import { makeExecutableSchema } from "@graphql-tools/schema";
 import _ from "lodash";
 
 import albums from "./modules/albums/albums.module";
@@ -13,12 +13,11 @@ import tracks from "./modules/tracks/tracks.module";
 import users from "./modules/users/users.module";
 
 async function main() {
-
   const typeDefs = gql`
     type DeletePayload {
-        acknowledged: Boolean,
-        deletedCount: Int 
-      }
+      acknowledged: Boolean
+      deletedCount: Int
+    }
   `;
 
   const resolvers = {};
@@ -33,28 +32,31 @@ async function main() {
       genres.typeDef,
       member.typeDef,
       tracks.typeDef,
-      users.typeDef
+      users.typeDef,
     ],
     resolvers: _.merge(
       resolvers,
-      tracks.resolvers, 
+      tracks.resolvers,
       users.resolvers,
-      genres.resolvers),
+      genres.resolvers,
+      artists.resolvers
+    ),
   });
 
   const server = new ApolloServer({
     schema,
     csrfPrevention: true,
-    cache: 'bounded',
+    cache: "bounded",
     dataSources: () => {
       return {
         tracksAPI: new tracks.TracksAPI(),
         usersAPI: new users.UsersAPI(),
         genresAPI: new genres.GenresAPI(),
+        artistsAPI: new artists.ArtistsAPI(),
       };
     },
     context: ({ req }) => {
-      const token = (req.get('Authorization') || '').trim();
+      const token = (req.get("Authorization") || "").trim();
       return { token };
     },
   });
