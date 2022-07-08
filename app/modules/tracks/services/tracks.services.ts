@@ -23,12 +23,7 @@ export class TracksAPI extends RESTDataSource {
   }
 
   async getTracks() {
-    const result = await this.get(path);
-    return result;
-    // .map((x: any) => {
-    //   const track = x as Track;
-    //   return {...track, id: track._id}
-    // });
+    return await this.get(path);
   }
 
   async getTrack(id: string) {
