@@ -4,6 +4,7 @@ const typeDefs = gql`
   type Member {
       id: ID!
       artist: Artist
+      nikeName: String
   }
 
   type Query {

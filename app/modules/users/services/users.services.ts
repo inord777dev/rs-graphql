@@ -26,7 +26,7 @@ export class UsersAPI extends RESTDataSource {
     email: string,
     favouriteArtistIds: string[]
   ) {
-    return this.post(path, {
+    return this.post(`${path}/register`, {
       firstName,
       lastName,
       password,
@@ -49,12 +49,5 @@ export class UsersAPI extends RESTDataSource {
 
   async verify(token: string) {
     return this.post(`${path}/verify`, undefined, { headers: { 'Authorization': token } });
-  }
-
-  willSendRequest(request: RequestOptions) {
-    // console.log(this.context.token, request);
-    // if (request.path == `${path}/verify`) {
-    //   request.headers.set('Authorization', `Bearer ${this.context.token}`);
-    // }
   }
 }
