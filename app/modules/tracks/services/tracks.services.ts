@@ -23,7 +23,12 @@ export class TracksAPI extends RESTDataSource {
   }
 
   async getTracks() {
-    return this.get(path);
+    const result = await this.get(path);
+    return result;
+    // .map((x: any) => {
+    //   const track = x as Track;
+    //   return {...track, id: track._id}
+    // });
   }
 
   async getTrack(id: string) {
@@ -59,15 +64,6 @@ export class TracksAPI extends RESTDataSource {
     duration: number,
     released: number,
     genresIds: string[]) {
-    console.log({
-      title,
-      albumId,
-      artistsIds,
-      bandsIds,
-      duration,
-      released,
-      genresIds
-    });  
     return await this.put(`${path}/${encodeURIComponent(id)}`, {
       title,
       albumId,
@@ -76,7 +72,7 @@ export class TracksAPI extends RESTDataSource {
       duration,
       released,
       genresIds
-    }, { headers: { 'Authorization': token } });
+    }, { headers: { 'Authorization': token } }) as Track;
   }
 
   async deleteTrack(token: string, id: string) {

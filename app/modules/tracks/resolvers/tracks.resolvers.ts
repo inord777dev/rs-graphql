@@ -25,7 +25,7 @@ const resolvers = {
   Query: {
     async track(parent: any, { trackId }: trackParams, context: any) {
       const result = await context.dataSources.tracksAPI.getTrack(trackId);
-      return result ? { ...result, id: result._id } : result;
+      return result ? { ...result, id: result._id } : null;
     },
     async tracks(parent: any, args: any, context: any) {
       const result = await context.dataSources.tracksAPI.getTracks();
@@ -44,7 +44,7 @@ const resolvers = {
         duration,
         released,
         genresIds);
-      return result ? { ...result, id: result._id } : result;
+      return result ? { ...result, id: result._id } : null;
     },
     async updateTrack(parent: any, { trackId, title, albumId, artistsIds, bandsIds, duration, released, genresIds }: updateTrackParams, context: any) {
       if(!context.token) throw new Error("Headers haven't Authorization: 'Bearer [Your token]'");
@@ -58,7 +58,7 @@ const resolvers = {
         duration,
         released,
         genresIds);
-      return result;
+      return result ? { ...result, id: result._id } : null;
     },
     async deleteTrack(parent: any, { trackId }: deleteTrackParams, context: any) {
       if(!context.token) throw new Error("Headers haven't Authorization: 'Bearer [Your token]'");

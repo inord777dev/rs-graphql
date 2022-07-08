@@ -10,7 +10,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    genres(genreId: ID!): Genre
+    genre(genreId: ID!): Genre
+    genres: [Genre]!
   }
 `
 

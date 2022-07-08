@@ -34,7 +34,7 @@ const typeDefs = gql`
       bands: [String!],
       duration: Int,
       released: Int,
-      genres: [String!]): String
+      genres: [String!]): Track
     deleteTrack(trackId: ID!): DeletePayload
   }
 `
