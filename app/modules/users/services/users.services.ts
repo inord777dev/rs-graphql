@@ -36,7 +36,6 @@ export class UsersAPI extends RESTDataSource {
   }
 
   async login(email: string, password: string) {
-    console.log(email, password);
     return this.post(`${path}/login`, {
       email,
       password,

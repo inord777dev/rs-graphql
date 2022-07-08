@@ -35,7 +35,11 @@ async function main() {
       tracks.typeDef,
       users.typeDef
     ],
-    resolvers: _.merge(resolvers, tracks.resolvers, users.resolvers),
+    resolvers: _.merge(
+      resolvers,
+      tracks.resolvers, 
+      users.resolvers,
+      genres.resolvers),
   });
 
   const server = new ApolloServer({
@@ -46,6 +50,7 @@ async function main() {
       return {
         tracksAPI: new tracks.TracksAPI(),
         usersAPI: new users.UsersAPI(),
+        genresAPI: new genres.GenresAPI(),
       };
     },
     context: ({ req }) => {

@@ -11,7 +11,22 @@ const typeDefs = gql`
 
   type Query {
     genre(genreId: ID!): Genre
-    genres: [Genre]!
+    genres: [Genre]
+  }
+
+  type Mutation {
+    createGenre(
+      name: String
+      description: String
+      country: String
+      year: Int) : Genre
+    updateGenre(
+      genreId: ID!
+      name: String
+      description: String
+      country: String
+      year: Int): Genre
+    deleteGenre(genreId: ID!): DeletePayload
   }
 `
 
