@@ -40,7 +40,8 @@ async function main() {
       users.resolvers,
       genres.resolvers,
       artists.resolvers,
-      bands.resolvers
+      bands.resolvers,
+      albums.resolvers
     ),
   });
 
@@ -55,6 +56,7 @@ async function main() {
         genresAPI: new genres.GenresAPI(),
         artistsAPI: new artists.ArtistsAPI(),
         bandsAPI: new bands.BandsAPI(),
+        albumsAPI: new albums.AlbumsAPI(),
       };
     },
     context: ({ req }) => {
