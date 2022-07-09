@@ -104,6 +104,24 @@ const resolvers = {
   },
   Album: {
     id: (parent: any) => parent._id,
+    artists: async (parent: any, args: any, context: any, info: any) => {
+      return parent.artistsIds.map(
+        async (artistsId: string) =>
+          await context.dataSources.artistsAPI.getArtist(artistsId)
+      );
+    },
+    bands: async (parent: any, args: any, context: any, info: any) => {
+      return parent.bandsIds.map(
+        async (bandsId: string) =>
+          await context.dataSources.bandsAPI.getBand(bandsId)
+      );
+    },
+    genres: async (parent: any, args: any, context: any, info: any) => {
+      return parent.genresIds.map(
+        async (genresId: string) =>
+          await context.dataSources.genresAPI.getGenre(genresId)
+      );
+    },
   },
 };
 

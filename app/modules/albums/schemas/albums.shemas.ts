@@ -7,7 +7,6 @@ const typeDefs = gql`
     released: Int
     artists: [Artist]
     bands: [Band]
-    albums: [Album]
     genres: [Genre]
     image: String
   }
