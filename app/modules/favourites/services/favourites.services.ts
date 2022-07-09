@@ -25,4 +25,32 @@ export class FavoritesAPI extends RESTDataSource {
     });
     return result as Favorite;
   }
+
+  async addFavourites(token: string, type: string, id: string) {
+    const result = await this.put(
+      `${path}/add`,
+      {
+        type,
+        id,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+    return result as Favorite;
+  }
+
+  async removeFavourites(token: string, type: string, id: string) {
+    const result = await this.put(
+      `${path}/remove`,
+      {
+        type,
+        id,
+      },
+      {
+        headers: { Authorization: token },
+      }
+    );
+    return result as Favorite;
+  }
 }
