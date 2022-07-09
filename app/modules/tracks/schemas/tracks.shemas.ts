@@ -20,7 +20,7 @@ const typeDefs = gql`
   type Mutation {
     createTrack(
       title: String!,
-      album: String,
+      albumId: String,
       artists: [String!],
       bands: [String!],
       duration: Int,

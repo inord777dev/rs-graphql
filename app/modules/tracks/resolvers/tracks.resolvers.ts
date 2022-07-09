@@ -105,7 +105,8 @@ const resolvers = {
   Track: {
     id: (parent: any) => parent._id,
     album: async (parent: any, args: any, context: any, info: any) => {
-      return await context.dataSources.artistsAPI.getArtist(parent.albumId);
+      const result = await context.dataSources.albumsAPI.getAlbum(parent.albumId);
+      return result;
     },
     artists: async (parent: any, args: any, context: any, info: any) => {
       return parent.artistsIds.map(
