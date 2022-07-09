@@ -41,7 +41,8 @@ async function main() {
       genres.resolvers,
       artists.resolvers,
       bands.resolvers,
-      albums.resolvers
+      albums.resolvers,
+      favourites.resolvers
     ),
   });
 
@@ -57,6 +58,7 @@ async function main() {
         artistsAPI: new artists.ArtistsAPI(),
         bandsAPI: new bands.BandsAPI(),
         albumsAPI: new albums.AlbumsAPI(),
+        favouritesAPI: new favourites.FavoritesAPI(),
       };
     },
     context: ({ req }) => {
