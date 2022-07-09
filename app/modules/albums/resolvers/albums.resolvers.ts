@@ -84,7 +84,7 @@ const resolvers = {
         bandsIds,
         trackIds,
         genresIds,
-        image,
+        image
       );
       return result ? result : null;
     },

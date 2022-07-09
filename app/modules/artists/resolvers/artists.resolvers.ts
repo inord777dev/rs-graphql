@@ -109,6 +109,12 @@ const resolvers = {
   },
   Artist: {
     id: (parent: any) => parent._id,
+    bands: async (parent: any, args: any, context: any, info: any) => {
+      return parent.bandsIds.map(
+        async (bandsId: string) =>
+          await context.dataSources.bandsAPI.getBand(bandsId)
+      );
+    },
   },
 };
 
