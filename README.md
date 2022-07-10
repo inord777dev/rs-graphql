@@ -39,7 +39,8 @@ To make cross-check easier and save you time, I performed [self cross-check](htt
 
 .env file contains app settings. Each entity must set port and path.
 
-```PORT=4000
+```
+PORT=4000
 MICROSERVISE_URL=http://localhost
 MICROSERVISE_TRACKS_PORT=3006
 MICROSERVISE_TRACKS_PATH=/v1/tracks
