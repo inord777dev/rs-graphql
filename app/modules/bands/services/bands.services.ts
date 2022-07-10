@@ -5,7 +5,7 @@ export interface Band {
   _id: string;
   name: string;
   origin: string;
-  membersId: string[];
+  members: string[];
   website: string;
   genresIds: string[];
 }

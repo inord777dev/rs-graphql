@@ -42,7 +42,8 @@ async function main() {
       artists.resolvers,
       bands.resolvers,
       albums.resolvers,
-      favourites.resolvers
+      favourites.resolvers,
+      member.resolvers
     ),
   });
 

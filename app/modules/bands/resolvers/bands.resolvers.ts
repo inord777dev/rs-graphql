@@ -78,10 +78,11 @@ const resolvers = {
   Band: {
     id: (parent: any) => parent._id,
     members: async (parent: any, args: any, context: any, info: any) => {
-      return parent.membersId.map(
-        async (artistsId: string) =>
-          await context.dataSources.artistsAPI.getArtist(artistsId)
-      );
+      return parent.members.map(async (artistsId: string) => {
+        const result = await context.dataSources.artistsAPI.getArtist(artistsId);
+        console.log(result);
+        return result;
+      });
     },
     genres: async (parent: any, args: any, context: any, info: any) => {
       return parent.genresIds.map(
