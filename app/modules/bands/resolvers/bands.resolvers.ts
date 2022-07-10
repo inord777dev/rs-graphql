@@ -80,7 +80,6 @@ const resolvers = {
     members: async (parent: any, args: any, context: any, info: any) => {
       return parent.members.map(async (artistsId: string) => {
         const result = await context.dataSources.artistsAPI.getArtist(artistsId);
-        console.log(result);
         return result;
       });
     },

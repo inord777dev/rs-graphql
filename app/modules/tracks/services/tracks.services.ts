@@ -38,7 +38,6 @@ export class TracksAPI extends RESTDataSource {
     duration: number,
     released: number,
     genresIds: string[]) {
-      console.log(albumId);
     return await this.post(path, {
       title,
       albumId,
