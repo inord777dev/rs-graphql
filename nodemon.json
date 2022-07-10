@@ -1,0 +1,5 @@
+{
+  "watch": ["./**/*"],
+  "ext": "ts, graphql",
+  "exec": "node --experimental-specifier-resolution=node --loader ts-node/esm app/index.ts"
+}

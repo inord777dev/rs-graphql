@@ -1,0 +1,35 @@
+{
+  "name": "rs-graphql",
+  "version": "1.0.0",
+  "description": "RS GraphQL API server",
+  "main": "app/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node --loader ts-node/esm app/index.ts",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inord777dev/rs-graphql.git"
+  },
+  "author": "inord777",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inord777dev/rs-graphql/issues"
+  },
+  "homepage": "https://github.com/inord777dev/rs-graphql#readme",
+  "dependencies": {
+    "apollo-datasource-rest": "^3.6.1",
+    "apollo-server": "^3.9.0",
+    "dotenv": "^16.0.1",
+    "graphql": "^16.5.0",
+    "graphql-tools": "^8.3.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.182",
+    "nodemon": "^2.0.18",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  }
+}
